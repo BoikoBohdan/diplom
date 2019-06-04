@@ -1,0 +1,43 @@
+button[title="Profile"]{
+  display: none;
+}
+body{
+  margin: 0px!important;
+}
+h1, h2, h3, h4, h5, h6, p, li, div, span{
+  font-family: 'Roboto';
+}
+
+#app {
+    height: 100vh;
+}
+
+.logoutButton {
+    width: 100%;
+    display: flex;
+}
+
+.logoutButton {
+    display: flex;
+    color: #6a6a6a;
+    margin: 0 9px;
+    justify-content: flex-start;
+    background: none;
+    border: none;
+    align-items: center;
+    font-size: 1rem;
+    padding: 12px 8px;
+    outline: none;
+}
+
+.logoutButton:hover {
+    background: #e6e6e6
+}
+
+.logoutButton svg {
+    margin-right: 17px
+}
+
+.notValid input {
+    color: red;
+}

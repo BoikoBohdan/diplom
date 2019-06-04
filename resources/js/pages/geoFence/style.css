@@ -1,0 +1,9 @@
+.ra-input.ra-input-coord label, .ra-input.ra-input-coord>div>div{
+  display: none;
+}
+.ra-input.ra-input-coord p {
+  color: red;
+}
+[class*='MuiTypography']{
+  display: none;
+}

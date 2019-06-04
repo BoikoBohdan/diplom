@@ -1,0 +1,31 @@
+.tab__list{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-around;
+  list-style: none;
+}
+.tab__item{
+  width: 15%;
+  min-width: 200px;
+  margin-bottom: 24px;
+}
+.tab__item button{
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 18px;
+  background: #eeeeee;
+  min-height: 48px;
+  min-width: 200px;
+  text-align: center;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  border: none;
+  outline: none;
+}
+.tab__item-active button{
+  background: #007d76;
+  color: #fff;
+}

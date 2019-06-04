@@ -1,0 +1,32 @@
+.driver-documents__select-type {
+    width: 200px;
+    min-width: 200px;
+    margin-right: 20px !important;
+    margin-bottom: 15px;
+    height: 48px;
+}
+.driver-documents__switch {
+    margin-top: 20px;
+}
+.driver-edit__vehicle-name {
+    margin-right: 20px;
+}
+.driver-vehicle__add {
+    margin-top: 20px !important;
+}
+.driver-vehicle__delete {
+    min-width: 56px !important;
+}
+.vehicle-documents__list {
+    display: flex;
+    flex-direction: column;
+}
+.vehicle-documents__item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.vehicle-documents__item > form {
+    min-width: 168px;
+}

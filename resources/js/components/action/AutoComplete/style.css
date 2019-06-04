@@ -1,0 +1,78 @@
+.react-autosuggest__suggestions-container {
+    position: absolute;
+    z-index: 99;
+    list-style: none;
+}
+.dashboard-invite__dropdown {
+    border: 3px solid red;
+}
+.react-autosuggest__suggestions-list {
+    list-style: none;
+    padding: 10px;
+    margin: 0;
+}
+[class*="MuiDialog-paperScrollPaper"] {
+    overflow-y: visible !important;
+}
+.react-autosuggest__container,
+.react-autosuggest__container > input {
+    height: 1.1875em;
+    width: 166.7px !important;
+    font: inherit;
+    color: rgba(0, 0, 0, 0.87);
+    border: 0;
+    margin: 0;
+    padding: 6px 0 7px;
+    display: block;
+    min-width: 0;
+    box-sizing: content-box;
+    background: none;
+    -webkit-tap-highlight-color: transparent;
+}
+.react-autosuggest__container {
+    margin-top: 16px;
+}
+.dashboard-manage__form-delete {
+    margin-left: 20px;
+}
+.dashboard__autosaggest-wrapper {
+    position: relative;
+    margin-top: 16px;
+    margin-bottom: 8px;
+}
+.dashboard__autosaggest-list {
+    position: absolute;
+    z-index: 2;
+    overflow: scroll !important;
+    max-height: 45vh;
+}
+.dashboard__autosaggest-buttons {
+    display: flex;
+    margin-right: 16px;
+}
+.dashboard__autosaggest-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.dashboard__autosaggest-item p {
+    margin-right: 10px;
+    padding: 16px;
+    outline: none;
+    cursor: pointer;
+    margin-bottom: 0;
+    width: 100%;
+}
+.dashboard__autosaggest-item input {
+    margin: 16px;
+    outline: none;
+    font-size: 0.9rem;
+    margin: 13px 16px;
+}
+.dashboard__autosaggest-item:hover {
+    background: #eeeeee;
+}
+.no__result {
+    margin: 16px auto 0;
+    text-align: center;
+}

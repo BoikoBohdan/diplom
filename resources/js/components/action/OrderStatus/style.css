@@ -1,0 +1,17 @@
+.order-status {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 5px 0;
+    height: 30px;
+}
+
+.order-status__color-block {
+    width: 25px;
+    height: 25px;
+}
+
+.order-status__text {
+    white-space: nowrap;
+    margin-left: 5px;
+}

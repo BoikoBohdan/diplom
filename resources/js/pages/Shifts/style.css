@@ -1,0 +1,15 @@
+.shift-container {
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    margin: 20px;
+    flex-wrap: wrap;
+}
+.title {
+    margin: 20px;
+}
+
+.textField, .select {
+    height: 50px;
+    width: 300px;
+}

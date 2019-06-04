@@ -1,0 +1,44 @@
+.dashboard-member__popup-delete {
+    width: 300px !important;
+    padding: 20px !important;
+    border-radius: 4px !important;
+}
+.dashboard-popup__buttons-spacer {
+    width: 20px;
+    height: 1px;
+}
+.dashboard-popup__buttons-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+.table__new {
+    animation: new_order 2s infinite;
+    animation-iteration-count: 1;
+}
+@keyframes new_order {
+    0% {
+        background: rgb(28, 248, 28);
+    }
+    100% {
+        background: #fff;
+    }
+}
+
+.table__update {
+    animation: update_order 2s infinite;
+    animation-iteration-count: 1;
+}
+@keyframes update_order {
+    0% {
+        background: yellow;
+    }
+    100% {
+        background: #fff;
+    }
+}
+
+.assigned_order {
+    border-left: 5px solid #0000FF;
+}

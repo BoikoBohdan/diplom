@@ -1,0 +1,21 @@
+.driver__cards{
+  padding: 20px;
+  margin-bottom: 20px;
+  overflow: unset!important;
+}
+.driver__cards .dropzone{
+    width: calc(296px + 40px);
+    height: calc(364px + 40px);
+}
+.simple-autosubmit__row{
+  display: flex;
+  flex-direction: column
+}
+.simple-autosubmit__row{
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: row
+}
+.simple-autosubmit__spacer{
+  width: 20px;
+}

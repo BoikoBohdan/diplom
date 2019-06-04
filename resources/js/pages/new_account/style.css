@@ -1,0 +1,11 @@
+
+.new-user__page{
+  background-image: url("https://source.unsplash.com/random/1600x900/daily");
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: calc(100vw - 16px);
+  height: calc(100vh - 16px);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}

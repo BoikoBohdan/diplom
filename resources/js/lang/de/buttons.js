@@ -1,0 +1,27 @@
+const buttons = {
+    btnEdit: 'Bearbeiten',
+    btnCreate: 'Erstellen',
+    btnDelete: 'Löschen',
+    btnShow: 'Anzeigen',
+    btnHide: 'Ausblenden',
+    btnSearch: 'Suchen',
+    btnExport: 'Exportieren',
+    btnDropFile: 'Datei einfach hierher ziehen',
+    btnSave: 'Speichern',
+    btnSearchLabel: 'Suchen',
+    btnChat: 'Chat',
+    btnAdd: 'Hinzufügen',
+    btnClose: 'Schließen',
+    btnAssignOrder: 'Bestellung zuweisen',
+    btnShowDetails: 'Details anzeigen',
+    btnConfirm: 'Bestätigen',
+    btnCancel: 'Abbrechen',
+    btnReassign: 'Erneut zuweisen',
+    btnSend: 'Senden',
+    btnSendFile: 'Datei senden',
+    searchMessageOrName: 'Nachricht oder Name suchen',
+    loading: 'Wird geladen',
+    message: 'Botschaft',
+    btnSubmit: 'Einreichen'
+}
+export default buttons

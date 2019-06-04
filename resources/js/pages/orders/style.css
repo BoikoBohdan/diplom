@@ -1,0 +1,49 @@
+#standard-disabled__small{
+  width: 225px;
+}
+.oreder__assign-button{
+  /*margin-top: 20px!important;*/
+  float: right;
+}
+
+.driver__cards,
+.order__cards {
+    padding: 20px;
+    margin-bottom: 20px;
+    overflow: unset!important;
+}
+.driver__cards .dropzone {
+    width: calc(296px + 40px);
+    height: calc(364px + 40px);
+}
+.simple-autosubmit__row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.simple-autosubmit__row {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row
+}
+.simple-autosubmit__spacer{
+    width: 20px;
+}
+
+.textField {
+    min-width: 20%;
+    margin-right: 20px;
+    margin-bottom: 20px;
+}
+
+.field {
+    width: 100%;
+}
+
+.topLine {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+
+}

@@ -1,0 +1,9 @@
+.edit-input__address {
+    position: relative;
+    display: flex;
+    width: 157.5px;
+}
+.driver-edit__no-space .dashboard__autosaggest-wrapper > div {
+    width: 157.5px;
+    min-width: 157.5px;
+}

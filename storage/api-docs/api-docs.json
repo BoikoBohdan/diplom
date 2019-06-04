@@ -1,0 +1,3978 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Eat.ch",
+        "description": "",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "/api",
+            "description": "OpenApi host"
+        }
+    ],
+    "paths": {
+        "api/documentation": {},
+        "/admin/cities": {
+            "post": {
+                "tags": [
+                    "Cities"
+                ],
+                "summary": "Create new city",
+                "description": "Add new city",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "Zurich"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/admin/drivers": {
+            "get": {
+                "tags": [
+                    "Drivers"
+                ],
+                "summary": "Index all drivers",
+                "description": "Get all driver from database",
+                "operationId": "App\\Http\\Controllers\\API\\Admin\\DriverController::index",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "drivers": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Drivers"
+                ],
+                "summary": "Create new driver",
+                "description": "Add new driver to database, in future this method will send notification to driver",
+                "operationId": "App\\Http\\Controllers\\API\\Admin\\DriverController::store",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "x-www-form-urlencoded": {
+                            "schema": {
+                                "schema": "Driver",
+                                "required": [
+                                    "first_name",
+                                    "last_name",
+                                    "email",
+                                    "phone",
+                                    "address",
+                                    "company_id",
+                                    "status"
+                                ],
+                                "properties": {
+                                    "first_name": {
+                                        "type": "string",
+                                        "example": "Developer"
+                                    },
+                                    "last_name": {
+                                        "type": "string",
+                                        "example": "Vlad"
+                                    },
+                                    "email": {
+                                        "type": "email",
+                                        "example": "test@email.com"
+                                    },
+                                    "phone": {
+                                        "type": "string",
+                                        "example": "+411234567890"
+                                    },
+                                    "address": {
+                                        "type": "string",
+                                        "example": "Ukraine, Kiev, etc"
+                                    },
+                                    "company_id": {
+                                        "type": "integer",
+                                        "example": "1"
+                                    },
+                                    "image": {
+                                        "type": "string",
+                                        "example": "here we put a base:64 encoded image, this field is not required"
+                                    },
+                                    "status": {
+                                        "type": "boolean",
+                                        "example": "true or false, 0 or 1"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "properties": {
+                                                "parameter": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "description": "message",
+                                                        "type": "string"
+                                                    }
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/admin/drivers/{id}/edit": {
+            "get": {
+                "tags": [
+                    "Drivers"
+                ],
+                "summary": "Get driver for edit",
+                "description": "Get selected driver and send him for update, a path shuld look like (api/admin/drivers/1/edit)",
+                "operationId": "App\\Http\\Controllers\\API\\Admin\\DriverController::edit",
+                "parameters": [
+                    {
+                        "name": "user_id",
+                        "in": "path",
+                        "description": "ID of user to return",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/admin/drivers/{id}": {
+            "put": {
+                "tags": [
+                    "Drivers"
+                ],
+                "summary": "Update selected driver",
+                "description": "Update selected driver",
+                "operationId": "App\\Http\\Controllers\\API\\Admin\\DriverController::update",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "x-www-form-urlencoded": {
+                            "schema": {
+                                "schema": "Driver",
+                                "properties": {
+                                    "first_name": {
+                                        "type": "string",
+                                        "example": "Developer"
+                                    },
+                                    "last_name": {
+                                        "type": "string",
+                                        "example": "Vlad"
+                                    },
+                                    "email": {
+                                        "type": "email",
+                                        "example": "test@email.com"
+                                    },
+                                    "phone": {
+                                        "type": "string",
+                                        "example": "+411234567890"
+                                    },
+                                    "address": {
+                                        "type": "string",
+                                        "example": "Ukraine, Kiev, etc"
+                                    },
+                                    "company_id": {
+                                        "type": "integer",
+                                        "example": "1"
+                                    },
+                                    "image": {
+                                        "type": "string",
+                                        "example": "here we put a base:64 encoded image, this field is not required"
+                                    },
+                                    "status": {
+                                        "type": "boolean",
+                                        "example": "true or false, 0 or 1"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "properties": {
+                                                "parameter": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "description": "message",
+                                                        "type": "string"
+                                                    }
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Drivers"
+                ],
+                "summary": "Delete selected driver",
+                "description": "Get selected driver and delete him with all his relations (vehicle, work locations)",
+                "operationId": "App\\Http\\Controllers\\API\\Admin\\DriverController::destroy",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of user to delete",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/admin/drivers/bulk-delete": {
+            "delete": {
+                "tags": [
+                    "Drivers"
+                ],
+                "summary": "Delete group of drivers",
+                "description": "Choose drivers and delete all of them",
+                "operationId": "App\\Http\\Controllers\\API\\Admin\\DriverController::bulkDestroy",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "x-www-form-urlencoded": {
+                            "schema": {
+                                "schema": "Driver",
+                                "required": [
+                                    "data"
+                                ],
+                                "type": "array",
+                                "items": {
+                                    "type": "integer"
+                                },
+                                "example": "data[1,2,3]"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/admin/drivers/bulk-update": {
+            "put": {
+                "tags": [
+                    "Drivers"
+                ],
+                "summary": "Update status for group of drivers",
+                "description": "Choose drivers and update status for them",
+                "operationId": "App\\Http\\Controllers\\API\\Admin\\DriverController::bulkUpdate",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "x-www-form-urlencoded": {
+                            "schema": {
+                                "schema": "Driver",
+                                "required": [
+                                    "data",
+                                    "status"
+                                ],
+                                "type": "array",
+                                "items": {
+                                    "type": "integer"
+                                },
+                                "example": "data[1,2,3], status[1]"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/admin/vehicles": {
+            "get": {
+                "tags": [
+                    "Driver Vehicles"
+                ],
+                "summary": "Index all vehicles",
+                "description": "Get all vehicles from database",
+                "operationId": "App\\Http\\Controllers\\API\\Admin\\DriverVehiclesController::index",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "vehicles": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Driver Vehicles"
+                ],
+                "summary": "Create new vehicle",
+                "description": "Add new vehicle assigned for driver in database",
+                "operationId": "App\\Http\\Controllers\\API\\Admin\\DriverVehiclesController::store",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "x-www-form-urlencoded": {
+                            "schema": {
+                                "schema": "Vehicles",
+                                "required": [
+                                    "name",
+                                    "driver_id",
+                                    "vehicle_type_id",
+                                    "is_shift"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "Toyota"
+                                    },
+                                    "driver_id": {
+                                        "type": "integer",
+                                        "example": "1"
+                                    },
+                                    "vehicle_type_id": {
+                                        "type": "integer",
+                                        "example": "1"
+                                    },
+                                    "is_shift": {
+                                        "type": "integer",
+                                        "example": "0"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "properties": {
+                                                "parameter": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "description": "message",
+                                                        "type": "string"
+                                                    }
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/admin/vehicles/{id}/edit": {
+            "get": {
+                "tags": [
+                    "Driver Vehicles"
+                ],
+                "summary": "Get vehicle for edit",
+                "description": "Get selected vehicle and send it for update, a path shuld look like (api/admin/vehicles/1/edit)",
+                "operationId": "App\\Http\\Controllers\\API\\Admin\\DriverVehiclesController::edit",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of vehicle to return",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/admin/vehicles/{id}": {
+            "put": {
+                "tags": [
+                    "Driver Vehicles"
+                ],
+                "summary": "Update selected vehicle",
+                "description": "Update selected vehicle",
+                "operationId": "App\\Http\\Controllers\\API\\Admin\\DriverVehiclesController::update",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of vehicle to update",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "x-www-form-urlencoded": {
+                            "schema": {
+                                "schema": "Vehicle",
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "Toyota"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "properties": {
+                                                "parameter": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "description": "message",
+                                                        "type": "string"
+                                                    }
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/admin/orders": {
+            "post": {
+                "tags": [
+                    "Orders"
+                ],
+                "summary": "Create new order",
+                "description": "Add new order",
+                "operationId": "App\\Http\\Controllers\\API\\Admin\\OrdersController::store",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "GroupGuid": {
+                                        "type": "string",
+                                        "example": "D2610E5E-9541-49FF-B330-E217F477F2D0"
+                                    },
+                                    "Reference": {
+                                        "type": "string",
+                                        "example": "15469432494f1"
+                                    },
+                                    "PickupDate": {
+                                        "type": "string",
+                                        "example": "2019-01-08"
+                                    },
+                                    "DropoffDate": {
+                                        "type": "string",
+                                        "example": "2019-01-08"
+                                    },
+                                    "PickupTimeFrom": {
+                                        "type": "string",
+                                        "example": "10:57:29Z"
+                                    },
+                                    "PickupTimeTo": {
+                                        "type": "string",
+                                        "example": "10:57:29Z"
+                                    },
+                                    "DropoffTimeFrom": {
+                                        "type": "string",
+                                        "example": "11:12:29Z"
+                                    },
+                                    "DropoffTimeTo": {
+                                        "type": "string",
+                                        "example": "11:12:29Z"
+                                    },
+                                    "EnforceSignature": {
+                                        "type": "boolean",
+                                        "example": "true"
+                                    },
+                                    "PickupNotes": {
+                                        "type": "string",
+                                        "example": "Zeit ab: 11:57"
+                                    },
+                                    "DropoffNotes": {
+                                        "type": "string",
+                                        "example": "Zeit um: 12:12, Floor: 1"
+                                    },
+                                    "EstimatedTimeLoading": {
+                                        "type": "integer",
+                                        "example": "5"
+                                    },
+                                    "EstimatedTimeDroppingOff": {
+                                        "type": "integer",
+                                        "example": "0"
+                                    },
+                                    "EstimatedBreakAfterDropoff": {
+                                        "type": "integer",
+                                        "example": "0"
+                                    },
+                                    "LoadType": {
+                                        "type": "integer",
+                                        "example": "0"
+                                    },
+                                    "Fee": {
+                                        "type": "string",
+                                        "example": "66.90"
+                                    },
+                                    "Notes": {
+                                        "type": "string",
+                                        "example": "some text"
+                                    },
+                                    "PaymentInfo": {
+                                        "type": "string",
+                                        "example": "some text"
+                                    },
+                                    "PaymentType": {
+                                        "type": "integer",
+                                        "example": "1"
+                                    },
+                                    "CustomerInfo": {
+                                        "type": "string",
+                                        "example": "some info"
+                                    },
+                                    "ASAP": {
+                                        "type": "boolean"
+                                    },
+                                    "ShipmentType": {
+                                        "type": "integer",
+                                        "example": "11"
+                                    },
+                                    "Pickup": {
+                                        "properties": {
+                                            "Reference": {
+                                                "type": "string",
+                                                "example": "2578"
+                                            },
+                                            "Name": {
+                                                "type": "string",
+                                                "example": "Subway Winterthur Neumarkt"
+                                            },
+                                            "Phone": {
+                                                "type": "string",
+                                                "example": "0848 74 99 21"
+                                            },
+                                            "City": {
+                                                "type": "string",
+                                                "example": "Winterthur"
+                                            },
+                                            "CountryCode": {
+                                                "type": "string",
+                                                "example": "CH"
+                                            },
+                                            "Postcode": {
+                                                "type": "string",
+                                                "example": "8400"
+                                            },
+                                            "Streetaddress": {
+                                                "type": "string",
+                                                "example": "Neumarkt 17"
+                                            },
+                                            "ContactName": {
+                                                "type": "string",
+                                                "example": "Julian Lechner - Andreschewski (SW Operations AG)"
+                                            },
+                                            "Note": {
+                                                "type": "string",
+                                                "example": "some notes"
+                                            }
+                                        },
+                                        "type": "object"
+                                    },
+                                    "Dropoff": {
+                                        "properties": {
+                                            "Reference": {
+                                                "type": "string",
+                                                "example": "null"
+                                            },
+                                            "Name": {
+                                                "type": "string",
+                                                "example": "Init7"
+                                            },
+                                            "Phone": {
+                                                "type": "string",
+                                                "example": "0787630111"
+                                            },
+                                            "City": {
+                                                "type": "string",
+                                                "example": "Winterthur"
+                                            },
+                                            "CountryCode": {
+                                                "type": "string",
+                                                "example": "CH"
+                                            },
+                                            "Postcode": {
+                                                "type": "string",
+                                                "example": "8406"
+                                            },
+                                            "Streetaddress": {
+                                                "type": "string",
+                                                "example": "Technoparkstrasse 5"
+                                            },
+                                            "ContactName": {
+                                                "type": "string",
+                                                "example": "Khadija Mojtahid"
+                                            },
+                                            "Note": {
+                                                "type": "string",
+                                                "example": "some notes"
+                                            }
+                                        },
+                                        "type": "object"
+                                    },
+                                    "Products": {
+                                        "properties": {
+                                            "Reference": {
+                                                "type": "string",
+                                                "example": "623ceb5c6b92db5b6f9966ec96935dde"
+                                            },
+                                            "Name": {
+                                                "type": "string",
+                                                "example": "Chicken Teriyaki Sandwich 30cm Getoastet, Cheese Oregano Brot, Scheibenkäse, Philadelphia, Extra Cheddar, Cheddar, Salat, Tomaten, Gurken, Oliven, Honey Mustard Sauce, Barbecuesauce"
+                                            },
+                                            "UnitType": {
+                                                "type": "integer",
+                                                "example": "9"
+                                            },
+                                            "City": {
+                                                "type": "string",
+                                                "example": "Winterthur"
+                                            },
+                                            "Quantity": {
+                                                "type": "integer",
+                                                "example": "1"
+                                            },
+                                            "Note": {
+                                                "type": "string",
+                                                "example": "some notes"
+                                            },
+                                            "Fee": {
+                                                "type": "string",
+                                                "example": "16.89"
+                                            },
+                                            "ImageUrl": {
+                                                "type": "string",
+                                                "example": ""
+                                            },
+                                            "Type": {
+                                                "type": "integer",
+                                                "example": "100"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/admin/orders/{order}": {
+            "patch": {
+                "tags": [
+                    "Orders"
+                ],
+                "summary": "Update order",
+                "description": "Update orders status",
+                "operationId": "App\\Http\\Controllers\\API\\Admin\\OrdersController::update",
+                "parameters": [
+                    {
+                        "name": "order",
+                        "in": "path",
+                        "description": "ID of Order",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "x-www-form-urlencoded": {
+                            "schema": {
+                                "schema": "Order",
+                                "required": [
+                                    "streetaddress",
+                                    "type"
+                                ],
+                                "properties": {
+                                    "streetaddress": {
+                                        "type": "string",
+                                        "example": "Verbitskogo 12"
+                                    },
+                                    "type": {
+                                        "type": "integer",
+                                        "example": "0 - pickup, 1 - dropoff"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "properties": {
+                                                "parameter": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "description": "message",
+                                                        "type": "string"
+                                                    }
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/admin/orders/{order}/cancel": {
+            "post": {
+                "tags": [
+                    "Orders"
+                ],
+                "summary": "Cancel order",
+                "description": "Make order cancelled",
+                "operationId": "App\\Http\\Controllers\\API\\Admin\\OrdersController::cancel",
+                "parameters": [
+                    {
+                        "name": "order",
+                        "in": "path",
+                        "description": "ID of Order",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "x-www-form-urlencoded": {
+                            "schema": {
+                                "schema": "Order",
+                                "required": [
+                                    "additional_cancel_reason_id",
+                                    "drivers_reason",
+                                    "admins_reason"
+                                ],
+                                "properties": {
+                                    "additional_cancel_reason_id": {
+                                        "type": "integer",
+                                        "example": "1"
+                                    },
+                                    "drivers_reason": {
+                                        "type": "string",
+                                        "example": "some reason"
+                                    },
+                                    "admins_reason": {
+                                        "type": "string",
+                                        "example": "some_reason"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "properties": {
+                                                "parameter": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "description": "message",
+                                                        "type": "string"
+                                                    }
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/admin/orders/{order}/set-status": {
+            "patch": {
+                "tags": [
+                    "Orders"
+                ],
+                "summary": "Set status",
+                "description": "Set order status",
+                "operationId": "App\\Http\\Controllers\\API\\Admin\\OrdersController::setStatus",
+                "parameters": [
+                    {
+                        "name": "order",
+                        "in": "path",
+                        "description": "ID of Order",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "x-www-form-urlencoded": {
+                            "schema": {
+                                "schema": "Order",
+                                "required": [
+                                    "status"
+                                ],
+                                "properties": {
+                                    "status": {
+                                        "type": "integer",
+                                        "example": "1"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "properties": {
+                                                "parameter": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "description": "message",
+                                                        "type": "string"
+                                                    }
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/admin/shifts": {
+            "post": {
+                "tags": [
+                    "Shifts"
+                ],
+                "summary": "Create new shift",
+                "description": "Add new shift",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "date": {
+                                        "type": "string",
+                                        "example": "2019-04-25"
+                                    },
+                                    "city_id": {
+                                        "type": "integer",
+                                        "example": "1"
+                                    },
+                                    "start": {
+                                        "type": "string",
+                                        "example": "19:20"
+                                    },
+                                    "end": {
+                                        "type": "string",
+                                        "example": "20:15"
+                                    },
+                                    "meal": {
+                                        "type": "integer",
+                                        "example": "1"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/admin/shifts/{shift}": {
+            "patch": {
+                "tags": [
+                    "Shifts"
+                ],
+                "summary": "Update shift",
+                "description": "Update shift",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "date": {
+                                        "type": "string",
+                                        "example": "2019-04-25"
+                                    },
+                                    "city_id": {
+                                        "type": "integer",
+                                        "example": "1"
+                                    },
+                                    "start": {
+                                        "type": "string",
+                                        "example": "19:20"
+                                    },
+                                    "end": {
+                                        "type": "string",
+                                        "example": "20:15"
+                                    },
+                                    "meal": {
+                                        "type": "integer",
+                                        "example": "1"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/password-forgot": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Send new password when user forgot his password",
+                "operationId": "App\\Http\\Controllers\\API\\ApiForgotPasswordController::sendNewPasswordEmail",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "required": [
+                                    "email"
+                                ],
+                                "properties": {
+                                    "email": {
+                                        "type": "email",
+                                        "example": "driver@driver.com"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "properties": {
+                                                "parameter": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "description": "message",
+                                                        "type": "string"
+                                                    }
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/login": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Login user into the system",
+                "operationId": "loginUser",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "required": [
+                                    "email",
+                                    "password"
+                                ],
+                                "properties": {
+                                    "email": {
+                                        "type": "email",
+                                        "example": "driver@driver.com"
+                                    },
+                                    "password": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Auth User Token",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "token": {
+                                            "description": "",
+                                            "type": "string"
+                                        },
+                                        "role": {
+                                            "description": "Role of authenticated user",
+                                            "type": "string"
+                                        },
+                                        "id": {
+                                            "description": "ID of authenticated user",
+                                            "type": "integer"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "properties": {
+                                                "parameter": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "description": "message",
+                                                        "type": "string"
+                                                    }
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/logout": {
+            "get": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Logout user into the system",
+                "operationId": "logoutUser",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "success"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/chat/user-list": {
+            "get": {
+                "tags": [
+                    "Chat"
+                ],
+                "summary": "Get list of drivers for admin or admins for driver in chat",
+                "description": "Get user list for chat",
+                "operationId": "App\\Http\\Controllers\\API\\Chat\\ChatController::getUsers",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "integer",
+                                            "example": "12"
+                                        },
+                                        "full_name": {
+                                            "type": "string",
+                                            "example": "Developer Vlad"
+                                        },
+                                        "image": {
+                                            "type": "string",
+                                            "example": "path to image"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/chat/room-list": {
+            "get": {
+                "tags": [
+                    "Chat"
+                ],
+                "summary": "Get list of available rooms for user",
+                "description": "Get room list for chat",
+                "operationId": "App\\Http\\Controllers\\API\\Chat\\ChatController::getRooms",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "integer",
+                                            "example": "12"
+                                        },
+                                        "users": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "integer",
+                                                "example": "12"
+                                            }
+                                        },
+                                        "last_message": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "integer",
+                                                    "example": "1"
+                                                },
+                                                "message": {
+                                                    "type": "string",
+                                                    "example": "Hello World"
+                                                },
+                                                "created_at": {
+                                                    "properties": {
+                                                        "date": {
+                                                            "type": "string",
+                                                            "example": "Some date"
+                                                        },
+                                                        "timezone": {
+                                                            "type": "string",
+                                                            "example": "UTC"
+                                                        }
+                                                    },
+                                                    "type": "object"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/chat/history/{room}": {
+            "get": {
+                "tags": [
+                    "Chat"
+                ],
+                "summary": "Get message history of selected room",
+                "description": "Get message history of selected room",
+                "operationId": "App\\Http\\Controllers\\API\\Chat\\ChatController::getMessageHistory",
+                "parameters": [
+                    {
+                        "parameter": "room",
+                        "name": "room",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "integer",
+                                            "example": "12"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Hello world!!!"
+                                        },
+                                        "sender_id": {
+                                            "type": "integer",
+                                            "example": "5"
+                                        },
+                                        "created_at": {
+                                            "properties": {
+                                                "date": {
+                                                    "type": "string",
+                                                    "example": "Some date"
+                                                },
+                                                "timezone": {
+                                                    "type": "string",
+                                                    "example": "UTC"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/chat/create-message": {
+            "post": {
+                "tags": [
+                    "Chat"
+                ],
+                "summary": "Create new chat message",
+                "description": "Create new chat message",
+                "operationId": "App\\Http\\Controllers\\API\\Chat\\ChatController::storeMessage",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "message",
+                                    "chat_room_id",
+                                    "reciever_id"
+                                ],
+                                "properties": {
+                                    "reciever_id": {
+                                        "type": "integer",
+                                        "example": "12"
+                                    },
+                                    "message": {
+                                        "type": "string",
+                                        "example": "hello world!!!"
+                                    },
+                                    "chat_room_id": {
+                                        "type": "integer",
+                                        "example": "3"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/chat/create-message-with-file": {
+            "post": {
+                "tags": [
+                    "Chat"
+                ],
+                "summary": "Create new chat message with file",
+                "description": "Create new chat message with file",
+                "operationId": "App\\Http\\Controllers\\API\\Chat\\ChatController::storeFile",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "file",
+                                    "chat_room_id"
+                                ],
+                                "properties": {
+                                    "file": {
+                                        "type": "string",
+                                        "example": "base64 encoded image"
+                                    },
+                                    "chat_room_id": {
+                                        "type": "integer",
+                                        "example": "3"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/chat/create-room": {
+            "post": {
+                "tags": [
+                    "Chat"
+                ],
+                "summary": "Create new chat room",
+                "description": "Create new chat room",
+                "operationId": "App\\Http\\Controllers\\API\\Chat\\ChatController::createChatRoom",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "file",
+                                    "chat_room_id"
+                                ],
+                                "properties": {
+                                    "reciever_id": {
+                                        "type": "integer",
+                                        "example": "3"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/driver/details": {
+            "get": {
+                "tags": [
+                    "Mobile App"
+                ],
+                "summary": "Get driver detailes",
+                "description": "Get driver detailes",
+                "operationId": "App\\Http\\Controllers\\API\\Driver\\DriverController::show",
+                "parameters": [
+                    {
+                        "parameter": "driver",
+                        "name": "driver ID",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "properties": {
+                                                "parameter": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "description": "message",
+                                                        "type": "string"
+                                                    }
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/driver/set-coordinates": {
+            "post": {
+                "tags": [
+                    "Mobile App"
+                ],
+                "summary": "Set driver coordinates",
+                "description": "Create or update driver coordinates",
+                "operationId": "App\\Http\\Controllers\\API\\Driver\\DriverController::setCoordinates",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "x-www-form-urlencoded": {
+                            "schema": {
+                                "schema": "Driver",
+                                "required": [
+                                    "lat",
+                                    "lng"
+                                ],
+                                "properties": {
+                                    "lat": {
+                                        "type": "string",
+                                        "example": "some lattitude"
+                                    },
+                                    "lng": {
+                                        "type": "string",
+                                        "example": "some longtitude"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "properties": {
+                                                "parameter": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "description": "message",
+                                                        "type": "string"
+                                                    }
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "driver/worklocations/{location}/set-active": {
+            "patch": {
+                "tags": [
+                    "Mobile App"
+                ],
+                "summary": "Set driver work location",
+                "description": "Set driver work location",
+                "operationId": "App\\Http\\Controllers\\API\\Driver\\DriverController::setActiveWorkLocation",
+                "parameters": [
+                    {
+                        "name": "location",
+                        "in": "path",
+                        "description": "ID of Location",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "properties": {
+                                                "parameter": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "description": "message",
+                                                        "type": "string"
+                                                    }
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "driver/set-is-shift-status": {
+            "patch": {
+                "tags": [
+                    "Mobile App"
+                ],
+                "summary": "Set driver is_shift status",
+                "description": "Set driver is_shift status",
+                "operationId": "App\\Http\\Controllers\\API\\Driver\\DriverController::setShiftStatus",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "properties": {
+                                                "parameter": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "description": "message",
+                                                        "type": "string"
+                                                    }
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/driver/order": {
+            "get": {
+                "tags": [
+                    "Mobile App"
+                ],
+                "summary": "Get orders list",
+                "operationId": "ordersList",
+                "responses": {
+                    "200": {
+                        "description": "Orders list",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "items": {
+                                        "properties": {
+                                            "orders": {
+                                                "type": "array",
+                                                "items": {
+                                                    "properties": {
+                                                        "id": {
+                                                            "type": "integer",
+                                                            "example": "1"
+                                                        },
+                                                        "collect": {
+                                                            "type": "string",
+                                                            "example": "e058c779-5141-378e-8c55-8d065e5ec3e6"
+                                                        },
+                                                        "payment_type": {
+                                                            "type": "integer",
+                                                            "example": "1"
+                                                        },
+                                                        "order_note": {
+                                                            "type": "string",
+                                                            "example": "Et saepe impedit quia repellendus velit"
+                                                        },
+                                                        "total": {
+                                                            "type": "float",
+                                                            "example": "1,15"
+                                                        },
+                                                        "pickup_address": {
+                                                            "type": "string",
+                                                            "example": "string"
+                                                        },
+                                                        "pickup_city": {
+                                                            "type": "string",
+                                                            "example": "string"
+                                                        },
+                                                        "pickup_country_code": {
+                                                            "type": "string",
+                                                            "example": "string"
+                                                        },
+                                                        "pickup_date": {
+                                                            "type": "date",
+                                                            "example": "2019-05-10"
+                                                        },
+                                                        "pickup_time_from": {
+                                                            "type": "time",
+                                                            "example": "12:40:44"
+                                                        },
+                                                        "pickup_time_to": {
+                                                            "type": "time",
+                                                            "example": "20:10:34"
+                                                        },
+                                                        "dropoff_address": {
+                                                            "type": "string",
+                                                            "example": "AS, New Quinten, Hallwylstrasse 43, 8004 Zürich"
+                                                        },
+                                                        "dropoff_city": {
+                                                            "type": "string",
+                                                            "example": "Zürich"
+                                                        },
+                                                        "dropoff_country_code": {
+                                                            "type": "string",
+                                                            "example": "4561"
+                                                        },
+                                                        "dropoff_date": {
+                                                            "type": "date",
+                                                            "example": "2019-05-10"
+                                                        },
+                                                        "dropoff_time_from": {
+                                                            "type": "time",
+                                                            "example": "12:10:17"
+                                                        },
+                                                        "dropoff_time_to": {
+                                                            "type": "time",
+                                                            "example": "15:20:54"
+                                                        },
+                                                        "restaurant_id": {
+                                                            "type": "integer",
+                                                            "example": "1"
+                                                        },
+                                                        "restaurant_name": {
+                                                            "type": "string",
+                                                            "example": "restaurant"
+                                                        },
+                                                        "restaurant_phone": {
+                                                            "type": "string",
+                                                            "example": "+852151546"
+                                                        },
+                                                        "restaurant_address": {
+                                                            "type": "string",
+                                                            "example": "AS, New Quinten, Hallwylstrasse 43, 8004 Zürich"
+                                                        },
+                                                        "restaurant_city": {
+                                                            "type": "string",
+                                                            "example": "Zürich"
+                                                        },
+                                                        "restaurant_country_code": {
+                                                            "type": "string",
+                                                            "example": "8004"
+                                                        },
+                                                        "restaurant_postcode": {
+                                                            "type": "string",
+                                                            "example": "8004"
+                                                        },
+                                                        "restaurant_note": {
+                                                            "type": "string",
+                                                            "example": "note"
+                                                        },
+                                                        "products": {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "properties": {
+                                                                    "name": {
+                                                                        "type": "string",
+                                                                        "example": "burger"
+                                                                    },
+                                                                    "quantity": {
+                                                                        "type": "integer",
+                                                                        "example": "2"
+                                                                    },
+                                                                    "note": {
+                                                                        "type": "string",
+                                                                        "example": "with cheese"
+                                                                    },
+                                                                    "fee": {
+                                                                        "type": "integer",
+                                                                        "example": "25"
+                                                                    },
+                                                                    "image": {
+                                                                        "type": "string",
+                                                                        "example": "image/example.jpg"
+                                                                    },
+                                                                    "customer_id": {
+                                                                        "type": "integer",
+                                                                        "example": "1"
+                                                                    }
+                                                                },
+                                                                "type": "object"
+                                                            }
+                                                        },
+                                                        "status": {
+                                                            "type": "integer",
+                                                            "example": "1"
+                                                        },
+                                                        "status_title": {
+                                                            "type": "string",
+                                                            "example": "assigned"
+                                                        },
+                                                        "customer": {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "properties": {
+                                                                    "id": {
+                                                                        "type": "integer",
+                                                                        "example": "1"
+                                                                    },
+                                                                    "name": {
+                                                                        "type": "string",
+                                                                        "example": "example"
+                                                                    }
+                                                                },
+                                                                "type": "object"
+                                                            }
+                                                        },
+                                                        "ratings": {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "properties": {
+                                                                    "id": {
+                                                                        "type": "integer",
+                                                                        "example": "1"
+                                                                    },
+                                                                    "score": {
+                                                                        "type": "integer",
+                                                                        "example": "233"
+                                                                    },
+                                                                    "message": {
+                                                                        "type": "string",
+                                                                        "example": "example"
+                                                                    },
+                                                                    "ratingable_type": {
+                                                                        "type": "string",
+                                                                        "example": "app/model"
+                                                                    },
+                                                                    "ratingable_id": {
+                                                                        "type": "integer",
+                                                                        "example": "1"
+                                                                    }
+                                                                },
+                                                                "type": "object"
+                                                            }
+                                                        },
+                                                        "drivers": {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "properties": {
+                                                                    "user_id": {
+                                                                        "type": "integer",
+                                                                        "example": "1"
+                                                                    },
+                                                                    "full_name": {
+                                                                        "type": "string",
+                                                                        "example": "Example Example"
+                                                                    },
+                                                                    "image": {
+                                                                        "type": "string",
+                                                                        "example": "image/example.jpg"
+                                                                    }
+                                                                },
+                                                                "type": "object"
+                                                            }
+                                                        }
+                                                    },
+                                                    "type": "object"
+                                                }
+                                            },
+                                            "waypoints": {
+                                                "type": "array",
+                                                "items": {
+                                                    "properties": {
+                                                        "id": {
+                                                            "type": "integer",
+                                                            "example": "1"
+                                                        },
+                                                        "order_id": {
+                                                            "type": "integer",
+                                                            "example": "1"
+                                                        },
+                                                        "type": {
+                                                            "type": "string",
+                                                            "example": "A"
+                                                        }
+                                                    },
+                                                    "type": "object"
+                                                }
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Authentication error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "description": "Message for API authentication error",
+                                            "type": "string",
+                                            "example": "token_expired|token_invalid|token_required"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/driver/order/{order}": {
+            "get": {
+                "tags": [
+                    "Mobile App"
+                ],
+                "summary": "Get order details",
+                "operationId": "orderDetails",
+                "parameters": [
+                    {
+                        "parameter": "order",
+                        "name": "order",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Order details",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "integer",
+                                            "example": "1"
+                                        },
+                                        "collect": {
+                                            "type": "string",
+                                            "example": "e058c779-5141-378e-8c55-8d065e5ec3e6"
+                                        },
+                                        "payment_type": {
+                                            "type": "integer",
+                                            "example": "1"
+                                        },
+                                        "order_note": {
+                                            "type": "string",
+                                            "example": "Et saepe impedit quia repellendus velit"
+                                        },
+                                        "total": {
+                                            "type": "float",
+                                            "example": "1,15"
+                                        },
+                                        "pickup_address": {
+                                            "type": "string",
+                                            "example": "string"
+                                        },
+                                        "pickup_city": {
+                                            "type": "string",
+                                            "example": "string"
+                                        },
+                                        "pickup_country_code": {
+                                            "type": "string",
+                                            "example": "string"
+                                        },
+                                        "pickup_date": {
+                                            "type": "date",
+                                            "example": "2019-05-10"
+                                        },
+                                        "pickup_time_from": {
+                                            "type": "time",
+                                            "example": "12:40:44"
+                                        },
+                                        "pickup_time_to": {
+                                            "type": "time",
+                                            "example": "20:10:34"
+                                        },
+                                        "dropoff_address": {
+                                            "type": "string",
+                                            "example": "AS, New Quinten, Hallwylstrasse 43, 8004 Zürich"
+                                        },
+                                        "dropoff_city": {
+                                            "type": "string",
+                                            "example": "Zürich"
+                                        },
+                                        "dropoff_country_code": {
+                                            "type": "string",
+                                            "example": "4561"
+                                        },
+                                        "dropoff_date": {
+                                            "type": "date",
+                                            "example": "2019-05-10"
+                                        },
+                                        "dropoff_time_from": {
+                                            "type": "time",
+                                            "example": "12:10:17"
+                                        },
+                                        "dropoff_time_to": {
+                                            "type": "time",
+                                            "example": "15:20:54"
+                                        },
+                                        "restaurant_id": {
+                                            "type": "integer",
+                                            "example": "1"
+                                        },
+                                        "restaurant_name": {
+                                            "type": "string",
+                                            "example": "restaurant"
+                                        },
+                                        "restaurant_phone": {
+                                            "type": "string",
+                                            "example": "+852151546"
+                                        },
+                                        "restaurant_address": {
+                                            "type": "string",
+                                            "example": "AS, New Quinten, Hallwylstrasse 43, 8004 Zürich"
+                                        },
+                                        "restaurant_city": {
+                                            "type": "string",
+                                            "example": "Zürich"
+                                        },
+                                        "restaurant_country_code": {
+                                            "type": "string",
+                                            "example": "8004"
+                                        },
+                                        "restaurant_postcode": {
+                                            "type": "string",
+                                            "example": "8004"
+                                        },
+                                        "restaurant_note": {
+                                            "type": "string",
+                                            "example": "note"
+                                        },
+                                        "products": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "name": {
+                                                        "type": "string",
+                                                        "example": "burger"
+                                                    },
+                                                    "quantity": {
+                                                        "type": "integer",
+                                                        "example": "2"
+                                                    },
+                                                    "note": {
+                                                        "type": "string",
+                                                        "example": "with cheese"
+                                                    },
+                                                    "fee": {
+                                                        "type": "integer",
+                                                        "example": "25"
+                                                    },
+                                                    "image": {
+                                                        "type": "string",
+                                                        "example": "image/example.jpg"
+                                                    },
+                                                    "customer_id": {
+                                                        "type": "integer",
+                                                        "example": "1"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        },
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "1"
+                                        },
+                                        "status_title": {
+                                            "type": "string",
+                                            "example": "assigned"
+                                        },
+                                        "customer": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "integer",
+                                                        "example": "1"
+                                                    },
+                                                    "name": {
+                                                        "type": "string",
+                                                        "example": "example"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        },
+                                        "ratings": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "integer",
+                                                        "example": "1"
+                                                    },
+                                                    "score": {
+                                                        "type": "integer",
+                                                        "example": "233"
+                                                    },
+                                                    "message": {
+                                                        "type": "string",
+                                                        "example": "example"
+                                                    },
+                                                    "ratingable_type": {
+                                                        "type": "string",
+                                                        "example": "app/model"
+                                                    },
+                                                    "ratingable_id": {
+                                                        "type": "integer",
+                                                        "example": "1"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        },
+                                        "drivers": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "user_id": {
+                                                        "type": "integer",
+                                                        "example": "1"
+                                                    },
+                                                    "full_name": {
+                                                        "type": "string",
+                                                        "example": "Example Example"
+                                                    },
+                                                    "image": {
+                                                        "type": "string",
+                                                        "example": "image/example.jpg"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/driver/order/{order}/set-status": {
+            "patch": {
+                "tags": [
+                    "Mobile App"
+                ],
+                "summary": "Set order status",
+                "operationId": "App\\Http\\Controllers\\API\\Driver\\OrderController::setStatus",
+                "parameters": [
+                    {
+                        "parameter": "order",
+                        "name": "order",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "status": {
+                                        "type": "integer",
+                                        "example": "3"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Message",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/driver/set-score": {
+            "post": {
+                "tags": [
+                    "Mobile App"
+                ],
+                "summary": "Create new rating",
+                "description": "Add rating for restaurant or customer",
+                "operationId": "App\\Http\\Controllers\\API\\Driver\\ScoreController::setScore",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "x-www-form-urlencoded": {
+                            "schema": {
+                                "schema": "Rating",
+                                "required": [
+                                    "message",
+                                    "rating",
+                                    "ratingable_type",
+                                    "ratingable_id"
+                                ],
+                                "properties": {
+                                    "message": {
+                                        "type": "string",
+                                        "example": "Some text"
+                                    },
+                                    "rating": {
+                                        "type": "integer",
+                                        "example": "2"
+                                    },
+                                    "ratingable_type": {
+                                        "type": "string",
+                                        "example": "customer"
+                                    },
+                                    "ratingable_id": {
+                                        "type": "integer",
+                                        "example": "4"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "properties": {
+                                                "parameter": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "description": "message",
+                                                        "type": "string"
+                                                    }
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/driver/shifts": {
+            "get": {
+                "tags": [
+                    "Mobile App"
+                ],
+                "summary": "Get shifts list",
+                "operationId": "shiftsList",
+                "responses": {
+                    "200": {
+                        "description": "Shifts list",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "items": {
+                                        "properties": {
+                                            "2019-05-16": {
+                                                "type": "array",
+                                                "items": {
+                                                    "properties": {
+                                                        "id": {
+                                                            "type": "integer"
+                                                        },
+                                                        "date": {
+                                                            "type": "string"
+                                                        },
+                                                        "city": {
+                                                            "type": "string"
+                                                        },
+                                                        "start": {
+                                                            "type": "string"
+                                                        },
+                                                        "end": {
+                                                            "type": "string"
+                                                        },
+                                                        "meal": {
+                                                            "type": "string"
+                                                        },
+                                                        "assigned": {
+                                                            "type": "boolean"
+                                                        }
+                                                    },
+                                                    "type": "object"
+                                                }
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Authentication error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "description": "Message for API authentication error",
+                                            "type": "string",
+                                            "example": "token_expired|token_invalid|token_required"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/driver/shifts/{shift}": {
+            "patch": {
+                "tags": [
+                    "Mobile App"
+                ],
+                "summary": "Set/unset driver on shift",
+                "parameters": [
+                    {
+                        "parameter": "shift",
+                        "name": "shift",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {}
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Message",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Authentication error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "description": "Message for API authentication error",
+                                            "type": "string",
+                                            "example": "token_expired|token_invalid|token_required"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Shift not found error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Model not found"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "driver/vehicles/{vehicle}/set-status": {
+            "patch": {
+                "tags": [
+                    "Mobile App"
+                ],
+                "summary": "Set driver status",
+                "description": "Set driver status",
+                "operationId": "App\\Http\\Controllers\\API\\Driver\\VehicleController::setStatus",
+                "parameters": [
+                    {
+                        "name": "vehicle",
+                        "in": "path",
+                        "description": "ID of Vehicle",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "x-www-form-urlencoded": {
+                            "schema": {
+                                "schema": "Vehicle",
+                                "required": [
+                                    "is_shift"
+                                ],
+                                "properties": {
+                                    "is_shift": {
+                                        "type": "boolean",
+                                        "example": "true / false"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "properties": {
+                                                "parameter": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "description": "message",
+                                                        "type": "string"
+                                                    }
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "responses": {
+            "401": {
+                "description": "Error",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "500": {
+                "description": "Error",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "scheme": "bearer"
+            }
+        }
+    }
+}

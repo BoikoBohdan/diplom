@@ -1,0 +1,11 @@
+.dashboard-invite__list {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+.dashboard-invite__list > span {
+    margin-right: 20px;
+}
+.dashboard-member__button-show button span {
+    text-transform: none;
+}

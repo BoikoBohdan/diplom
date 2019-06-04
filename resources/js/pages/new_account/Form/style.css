@@ -1,0 +1,33 @@
+.new-user__form{
+  width: 500px;
+  padding: 20px;
+}
+[class*='MuiDialog-paperWidthSm']{
+  width: 400px!important;
+}
+.new-user__form > div {
+  display: block;
+  width: 500px;
+  margin: 0;
+}
+.new-user__form-input{
+  width: 100%;
+}
+.new-user__form-buttons{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 40px 0 0 !important;
+}
+.new-user__form-buttons >span{
+  margin-right: 20px;
+}
+.new-user__form-error{
+  color: red;
+}
+.new-user__form-success{
+  color: green
+}
+.new-user__form-dialog{
+  overflow-y: none;
+}

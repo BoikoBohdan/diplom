@@ -1,0 +1,9 @@
+.input_base {
+    min-width: 40px;
+}
+
+.input_base input {
+    text-align: center;
+    font-size: 13px;
+    width: 90px;
+}

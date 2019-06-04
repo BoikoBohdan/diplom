@@ -1,0 +1,32 @@
+.table__curent-page{
+  font-size: 18px;
+  font-weight: 500;
+}
+.footer__tool-bar{
+  display: flex!important;
+  align-items: center;
+  justify-content: flex-end;
+  height: 56px;
+}
+.table__pows-per-page--text{
+  margin-right: 24px;
+}
+.table__from-to-curent{
+  margin: 0 24px;
+}
+.table__curent-page-wrapper{
+  display: flex;
+  align-items: center;
+  height: 32px;
+  justify-content: space-between;
+  margin-right: 12px;
+}
+.table__change-page--disabled{
+  opacity: 0.5;
+}
+.table__change-page{
+  cursor: pointer;
+}
+.table__change-page-empty{
+  margin-right: 12px;
+}

@@ -1,0 +1,71 @@
+p {
+  margin: 0;
+}
+.ordersChartBox {
+  display: flex;
+  justify-content: flex-start;
+  /* align-items: center; */
+  padding: 25px;
+  padding-left: 55px;
+}
+.dataBox {
+  position: relative;
+  height: 200px;
+}
+.coBox {
+  position: relative;
+  width: 200px;
+  height: 200px;
+}
+.dashboard-chart {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
+.chartData {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.borderChart {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.circleHeader {
+  font-size: 25px;
+  font-weight: 600;
+  margin-bottom: 7px;
+}
+.circleNumbers {
+  font-size: 18px;
+  font-weight: 400;
+}
+.ordersTextBox {
+  padding-top: 7px;
+  padding-left: 50px;
+  padding-right: 50px;
+  display: flex;
+  flex-direction: column;
+}
+.ordersHeader {
+  font-size: 25px;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+.ordersNumbers {
+  margin: 8px;
+  margin-left: 0;
+}
+.ordersRemarks {
+  padding-top: 30px;
+  padding-bottom: 20px;
+}

@@ -1,0 +1,8 @@
+.dashboard-invite__popup-dialog {
+    width: 300px !important;
+    padding: 20px !important;
+    border-radius: 4px !important;
+}
+.dashboard-invite__popup-dialog .dashboard__autosaggest-wrapper > div {
+    min-width: 157.5px;
+}

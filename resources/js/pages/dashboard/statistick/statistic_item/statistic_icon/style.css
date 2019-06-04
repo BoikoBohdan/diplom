@@ -1,0 +1,12 @@
+
+.dashboard-statistick__icon-wrapper{
+ height: 100%;
+ width: 30%;
+ display: flex;
+ align-items: center;
+ justify-content: space-around;
+ background-color: rgba(53, 53, 53, 0.6);
+}
+.dashboard-statistick__icon{
+  width: 50px
+}

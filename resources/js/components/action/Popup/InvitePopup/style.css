@@ -1,0 +1,34 @@
+.dashboard-invite__popup-dialog{
+  width: 300px!important;
+  padding: 20px!important;
+  border-radius: 4px!important;
+}
+[class*='MuiDialog-paperWidthSm']{
+  width: 400px!important;
+}
+.dashboard-invite__popup > div {
+  display: block;
+  width: 300px;
+  margin: 0;
+}
+.dashboard-invite__popup-input{
+  width: 100%;
+}
+.dashboard-invite__popup-buttons{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 40px 0 0 !important;
+}
+.dashboard-invite__popup-buttons >span{
+  margin-right: 20px;
+}
+.dashboard-invite-popup-error{
+  color: red;
+}
+.dashboard-invite-popup-success{
+  color: green
+}
+.dashboard-invite__popup-dialog{
+  overflow-y: none;
+}

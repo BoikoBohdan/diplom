@@ -1,0 +1,55 @@
+.dropzone__preview-wrapper {
+    width: 100%;
+    height: 100%;
+    margin-right: 20px;
+    border: 2px dashed #0087f7;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.dropzone__preview {
+    width: auto;
+    height: auto;
+    max-width: 296px;
+    max-height: 364px;
+}
+.dropzone__field {
+    border: 2px dashed #0087f7;
+    border-radius: 5px;
+    background: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    height: 100%;
+}
+.driver-edit__vehicle-images .dropzone {
+    margin: 0 20px;
+}
+.vehicle-documents__item .dropzone {
+    margin: 0 20px;
+}
+.dropzone .dropzone {
+    margin: 0;
+}
+.dropzone {
+    width: 296px;
+    height: 364px;
+    margin-right: 20px;
+    position: relative;
+}
+.dropzone__cross {
+    position: absolute;
+    right: -14px;
+    top: -14px;
+    z-index: 10;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: #fff;
+    cursor: pointer;
+}
+.dropzone__field p {
+    font-size: 18px;
+}

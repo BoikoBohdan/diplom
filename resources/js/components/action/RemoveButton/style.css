@@ -1,0 +1,44 @@
+button{
+  outline: 0;
+}
+button svg{
+  min-width: 24px;
+}
+.delete-btn{
+  border: none;
+  background: none;
+}
+#delete-icon {
+  fill: red;
+}
+.popup-wrapper{
+  margin: 40px;
+}
+.popup-header{
+  font-size: 36px;
+  text-align: center;
+}
+.popup-buttons{
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.popup-button{
+  padding: 10px 30px;
+  border: 1px solid #eee;
+  margin-top: 20px;
+  font-size: 18px;
+  border-radius: 5px;
+  font-weight: 400;
+}
+.popup-button__white{
+  background-color: #fff;
+}
+.popup-button__red{
+  background-color: red;
+  color: #fff;
+}
+#triger_for_refresh{
+  display: none;
+}
